@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+//COMPONENTS
+import TodoCounter from './components/TodoCounter'
+import TodoSearch from './components/TodoSearch'
+import TodoList from './components/TodoList'
+import TodoItem from './components/TodoItem'
+import CreateTodoButton from './components/CreateTodoButton'
+
+//STYLES
+
+const todo = [
+  { text: 'Learn React', completed: false},
+  { text: 'Learn Ingles', completed: false},
+  { text: 'Learn Vue', completed: false},
+]
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <TodoCounter />
+      <TodoSearch />
+      <TodoList>
+        {todo.map(item => (
+          <TodoItem key={item.text} text={item.text} completed={item.completed} />
+        ))}
+      </TodoList>
+      <CreateTodoButton />
+    </>
+  )
 }
 
-export default App;
+export default App
