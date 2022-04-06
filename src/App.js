@@ -10,19 +10,22 @@ import CreateTodoButton from './components/CreateTodoButton'
 //STYLES
 
 const todo = [
-  { text: 'Learn React', completed: false},
-  { text: 'Learn Ingles', completed: false},
-  { text: 'Learn Vue', completed: false},
+  { text: 'Learn React', completed: true },
+  { text: 'Learn Ingles', completed: false },
+  { text: 'Learn Vue', completed: false },
 ]
-
 const App = () => {
   return (
     <>
       <TodoCounter />
       <TodoSearch />
       <TodoList>
-        {todo.map(item => (
-          <TodoItem key={item.text} text={item.text} completed={item.completed} />
+        {todo.map((item) => (
+          <TodoItem
+            key={item.text}
+            text={item.text}
+            completed={item.completed}
+          />
         ))}
       </TodoList>
       <CreateTodoButton />
