@@ -1,16 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
+import AppUI from './components/App/AppUI'
 
-//COMPONENTS
-import TodoCounter from './components/TodoCounter'
-import TodoSearch from './components/TodoSearch'
-import TodoList from './components/TodoList'
-import TodoItem from './components/TodoItem'
-import CreateTodoButton from './components/CreateTodoButton'
-
-//STYLES
-
-const defaultTodos = [
+export const defaultTodos = [
   { text: 'Learn React', completed: true },
   { text: 'Learn Ingles', completed: false },
   { text: 'Learn Vue', completed: false },
@@ -40,36 +32,31 @@ const App = () => {
   }
 
   //FUNCION PARA TOGGLE DE  TODO
-  const toggleCompleteTodo = (index) => {
+  const toggleCompleteTodo = (text) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === text)
     const newTodos = [...todos]
-    newTodos[index].completed = !newTodos[index].completed
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed
     setTodos(newTodos)
   }
 
   //FUNCION PARA ELIMINAR TODO
-  const deleteTodo = (index) => {
+  const deleteTodo = (text) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === text)
     const newTodos = [...todos]
-    newTodos.splice(index, 1)
+    newTodos.splice(todoIndex, 1)
     setTodos(newTodos)
   }
 
   return (
-    <>
-      <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
-      <TodoSearch search={search} setSearch={setSearch} />
-      <TodoList>
-        {searchedTodos.map((item) => (
-          <TodoItem
-            key={item.text}
-            text={item.text}
-            completed={item.completed}
-            onComplete={() => toggleCompleteTodo(todos.indexOf(item))}
-            onDelete={() => deleteTodo(todos.indexOf(item))}
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
-    </>
+    <AppUI
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      searchedTodos={searchedTodos}
+      search={search}
+      setSearch={setSearch}
+      toggleCompleteTodo={toggleCompleteTodo}
+      deleteTodo={deleteTodo}
+    />
   )
 }
 
