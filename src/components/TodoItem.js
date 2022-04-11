@@ -14,7 +14,7 @@ const TodoItem = ({ text, completed, onComplete, onDelete }) => {
         className={`Icon Icon-check ${completed && 'Icon-check--active'}`}
         alt="checked"
         onClick={onComplete}
-        value = {isChecked}
+        value={isChecked}
       />
       <p className={`TodoItem-p ${completed && 'TodoItem-p--completed'}`}>
         {text}

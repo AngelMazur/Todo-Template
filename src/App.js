@@ -8,7 +8,6 @@ import TodoList from './components/TodoList'
 import TodoItem from './components/TodoItem'
 import CreateTodoButton from './components/CreateTodoButton'
 
-
 //STYLES
 
 const defaultTodos = [
@@ -24,7 +23,7 @@ const App = () => {
 
   //CONSTANTES DE CONTADOR TODO
   const totalTodos = todos.length
-  const completedTodos = todos.filter(todo => todo.completed).length
+  const completedTodos = todos.filter((todo) => todo.completed).length
 
   //ARRAY PARA PINTAR TODOS LOS TODOS
   let searchedTodos = []
@@ -56,14 +55,8 @@ const App = () => {
 
   return (
     <>
-      <TodoCounter
-        totalTodos={totalTodos}
-        completedTodos={completedTodos}
-      />
-      <TodoSearch
-        search={search}
-        setSearch={setSearch}
-      />
+      <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
+      <TodoSearch search={search} setSearch={setSearch} />
       <TodoList>
         {searchedTodos.map((item) => (
           <TodoItem
