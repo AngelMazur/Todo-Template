@@ -1,16 +1,19 @@
 import React from 'react'
 import { useState } from 'react'
 import AppUI from './components/App/AppUI'
+import  useLocalStorage  from './components/Hooks/useLocalStorage'
 
-export const defaultTodos = [
-  { text: 'Learn React', completed: true },
-  { text: 'Learn Ingles', completed: false },
-  { text: 'Learn Vue', completed: false },
-  { text: 'Learn Angular', completed: false },
-]
+//TODO:BORRAR TODOS LOS TODOS
+// export const defaultTodos = [
+//   { text: 'Learn React', completed: true },
+//   { text: 'Learn Ingles', completed: false },
+//   { text: 'Learn Vue', completed: false },
+//   { text: 'Learn Angular', completed: false },
+// ]
 
 const App = () => {
-  const [todos, setTodos] = useState(defaultTodos)
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
+  //USESTATE
   const [search, setSearch] = useState('')
 
   //CONSTANTES DE CONTADOR TODO
@@ -36,7 +39,7 @@ const App = () => {
     const todoIndex = todos.findIndex((todo) => todo.text === text)
     const newTodos = [...todos]
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   //FUNCION PARA ELIMINAR TODO
@@ -44,7 +47,7 @@ const App = () => {
     const todoIndex = todos.findIndex((todo) => todo.text === text)
     const newTodos = [...todos]
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   return (
