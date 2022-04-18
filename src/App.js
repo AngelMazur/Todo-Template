@@ -12,7 +12,12 @@ import  useLocalStorage  from './components/Hooks/useLocalStorage'
 // ]
 
 const App = () => {
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', [])
   //USESTATE
   const [search, setSearch] = useState('')
 
@@ -52,13 +57,15 @@ const App = () => {
 
   return (
     <AppUI
-      totalTodos={totalTodos}
       completedTodos={completedTodos}
+      deleteTodo={deleteTodo}
+      error={error}
+      loading={loading}
+      toggleCompleteTodo={toggleCompleteTodo}
+      totalTodos={totalTodos}
       searchedTodos={searchedTodos}
       search={search}
       setSearch={setSearch}
-      toggleCompleteTodo={toggleCompleteTodo}
-      deleteTodo={deleteTodo}
     />
   )
 }

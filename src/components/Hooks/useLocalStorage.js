@@ -1,27 +1,48 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function useLocalStorage (itemName, initialValue) {
-  const localStorageItem = localStorage.getItem(itemName)
-  let parsedItem
-  
-  // Parse the localStorage string and store it in parsedItem.
-  if (!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue))
-    parsedItem = initialValue
-  } else {
-    parsedItem = JSON.parse(localStorageItem)
-  }
+function useLocalStorage(itemName, initialValue) {
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [item, setItem] = useState(initialValue)
+
+    useEffect(() => {
+    setTimeout(() => {
+      try {
+        const localStorageItem = localStorage.getItem(itemName)
+        let parsedItem
+        // Parse the localStorage string and store it in parsedItem.
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue))
+          parsedItem = initialValue
+        } else {
+          parsedItem = JSON.parse(localStorageItem)
+        }
+
+        setError(false)
+        setLoading(false)
+        setItem(parsedItem)
+      } catch (error) {
+        setError(error)
+      }
+    }, 1000)
+  }, [initialValue, itemName])
+
   //SAVE STORAGE OF FUNCTION TOGGLECOMPLETE AND DELETE
-  const [item, setItem] = useState(parsedItem)
   const saveItem = (newItem) => {
-    const ItemJSON = JSON.stringify(newItem)
-    localStorage.setItem(itemName, ItemJSON)
-    setItem(newItem)
+    try {
+      const ItemJSON = JSON.stringify(newItem)
+      localStorage.setItem(itemName, ItemJSON)
+      setItem(newItem)
+    } catch (error) {
+      setError(error)
+    }
   }
-  return [
+  return {
+    error,
+    loading,
     item,
     saveItem,
-  ]
+  }
 }
 
 export default useLocalStorage

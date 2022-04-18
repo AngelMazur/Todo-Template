@@ -10,13 +10,15 @@ import CreateTodoButton from '../CreateTodoButton'
 
 
 const AppUI = ({
-  totalTodos,
   completedTodos,
+  deleteTodo,
+  error,
+  loading,
+  toggleCompleteTodo,
+  totalTodos,
   searchedTodos,
   search,
   setSearch,
-  toggleCompleteTodo,
-  deleteTodo,
 }) => {
   return (
     <>
@@ -28,6 +30,9 @@ const AppUI = ({
       search={search}
       setSearch={setSearch}
     />
+    {loading && <p>Loading...</p>}
+    {error && <p>Error...</p>}
+    {(!loading && !searchedTodos.length) && <p>Crea tu primer TODO!</p>}
     <TodoList>
       {searchedTodos.map((item) => (
         <TodoItem
