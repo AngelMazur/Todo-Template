@@ -2,11 +2,13 @@ import React from 'react'
 import { useContext } from 'react'
 
 //COMPONENTS
-import TodoCounter from '../TodoCounter'
-import TodoSearch from '../TodoSearch'
-import TodoList from '../TodoList'
-import TodoItem from '../TodoItem'
 import CreateTodoButton from '../CreateTodoButton'
+import Modal from '../Modal'
+import TodoCounter from '../TodoCounter'
+import TodoForm from '../TodoForm'
+import TodoItem from '../TodoItem'
+import TodoList from '../TodoList'
+import TodoSearch from '../TodoSearch'
 import { TodoContext } from '../TodoContext'
 
 const AppUI = () => {
@@ -14,13 +16,14 @@ const AppUI = () => {
     deleteTodo,
     error,
     loading,
+    openModal,
     toggleCompleteTodo,
     searchedTodos,
   } = useContext(TodoContext)
   return (
     <>
-      <TodoCounter/>
-      <TodoSearch/>
+      <TodoCounter />
+      <TodoSearch />
 
       {loading && <p>Loading...</p>}
       {error && <p>Error...</p>}
@@ -38,6 +41,11 @@ const AppUI = () => {
         ))}
       </TodoList>
       <CreateTodoButton />
+      {!!openModal && (
+        <Modal>
+          <TodoForm />
+        </Modal>
+      )}
     </>
   )
 }

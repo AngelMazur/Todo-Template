@@ -5,14 +5,17 @@ import useLocalStorage from '../components/Hooks/useLocalStorage'
 export const TodoContext = createContext()
 
 export const TodoProvider = ({ children }) => {
+  //PROPS PROVIDER
   const {
     item: todos,
     saveItem: saveTodos,
     loading,
     error,
   } = useLocalStorage('TODOS_V1', [])
+
   //USESTATE
   const [search, setSearch] = useState('')
+  const [openModal, setOpenModal] = useState(false)
 
   //CONSTANTES DE CONTADOR TODO
   const totalTodos = todos.length
@@ -40,6 +43,17 @@ export const TodoProvider = ({ children }) => {
     saveTodos(newTodos)
   }
 
+  //FUNCION PARA AÑADIR TODO
+  const addTodo = (text) => {
+    if (!text.trim()) {
+      alert('El nombre está vacío, escribe algo')
+      return
+    }
+    const newTodos = [...todos]
+    newTodos.push({ text, completed: false })
+    saveTodos(newTodos)
+  }
+
   //FUNCION PARA ELIMINAR TODO
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text)
@@ -50,14 +64,17 @@ export const TodoProvider = ({ children }) => {
   return (
     <TodoContext.Provider
       value={{
+        addTodo,
         completedTodos,
         deleteTodo,
         error,
         loading,
+        openModal,
         toggleCompleteTodo,
         totalTodos,
         searchedTodos,
         search,
+        setOpenModal,
         setSearch,
       }}
     >
