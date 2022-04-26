@@ -5,7 +5,7 @@ function useLocalStorage(itemName, initialValue) {
   const [loading, setLoading] = useState(true)
   const [item, setItem] = useState(initialValue)
 
-    useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       try {
         const localStorageItem = localStorage.getItem(itemName)
@@ -25,7 +25,8 @@ function useLocalStorage(itemName, initialValue) {
         setError(error)
       }
     }, 1000)
-  }, [initialValue, itemName])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   //SAVE STORAGE OF FUNCTION TOGGLECOMPLETE AND DELETE
   const saveItem = (newItem) => {

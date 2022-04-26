@@ -14,27 +14,40 @@ const TodoForm = () => {
   const onCancel = () => {
     setOpenModal(false)
   }
+  //FUNCION PARA AGREGAR TODO Y CERRAR MODAL
+  const handleSubmit = () => {
+    addTodo(newTodoValue)
+    setOpenModal(false)
+  }
+
+  //FUNCION PARA HACER SUBMIT CON ENTER
+  const onKeyUp = (e) => {
+    if (e.key === 'Enter') return handleSubmit()
+  }
+
   //FUNCION PARA CAMBIAR EL VALOR DEL INPUT
   const onChange = (e) => {
     setNewTodoValue(e.target.value)
   }
 
-  //FUNCION PARA GUARDAR TODO
+  //FUNCION DE SUBMIT
   const onSubmit = (e) => {
     e.preventDefault()
-    addTodo(newTodoValue)
-    setOpenModal(false)
+    handleSubmit()
   }
 
   return (
     <form onSubmit={onSubmit}>
-      <label><h3>Escribe nuevo TODO</h3></label>
+      <label>
+        <h3>Escribe nueva Tarea</h3>
+      </label>
       <textarea
         cols="30"
         id="comment"
         name="comment"
+        onKeyUp={onKeyUp}
         onChange={onChange}
-        placeholder="Es de bien nacido, ser agradecido"
+        placeholder="Escribe aquí..."
         rows="10"
         value={newTodoValue}
       ></textarea>
@@ -47,10 +60,7 @@ const TodoForm = () => {
           Cancelar
         </button>
 
-        <button
-        className="TodoForm-button TodoForm-button-add"
-        type="submit"
-        >
+        <button className="TodoForm-button TodoForm-button-add" type="submit">
           Enviar
         </button>
       </div>
