@@ -3,9 +3,10 @@ import { useState } from 'react'
 import '../styles/TodoItem.style.css'
 import checked from '../Images/checked.png'
 import checkedCompleted from '../Images/checkedCompleted.png'
+import { CgCloseO } from 'react-icons/cg'
 
 const TodoItem = ({ text, completed, onComplete, onDelete }) => {
-  const [isChecked, setIsChecked] = useState(completed)
+  const [isChecked] = useState(completed)
 
   return (
     <li className="TodoItem">
@@ -16,12 +17,13 @@ const TodoItem = ({ text, completed, onComplete, onDelete }) => {
         onClick={onComplete}
         value={isChecked}
       />
-      <p className={`TodoItem-p ${completed && 'TodoItem-p--completed'}`}>
+      <p
+        className={`TodoItem-p ${completed && 'TodoItem-p--completed'}`}
+        contentEditable = {true}
+        >
         {text}
       </p>
-      <span className="Icon Icon-delete" onClick={onDelete}>
-        X
-      </span>
+      <CgCloseO className="Icon Icon-delete" onClick={onDelete} />
     </li>
   )
 }

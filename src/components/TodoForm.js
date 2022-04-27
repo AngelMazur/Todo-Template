@@ -42,6 +42,8 @@ const TodoForm = () => {
         <h3>Escribe nueva Tarea</h3>
       </label>
       <textarea
+        autoFocus
+        autoCorrect='on'
         cols="30"
         id="comment"
         name="comment"
@@ -49,6 +51,7 @@ const TodoForm = () => {
         onChange={onChange}
         placeholder="Escribe aquí..."
         rows="10"
+        required
         value={newTodoValue}
       ></textarea>
       <div className="TodoForm-buttonContainer">

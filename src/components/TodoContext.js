@@ -45,10 +45,6 @@ export const TodoProvider = ({ children }) => {
 
   //FUNCION PARA AÑADIR TODO
   const addTodo = (text) => {
-    if (!text.trim()) {
-      alert('El nombre está vacío, escribe algo')
-      return
-    }
     const newTodos = [...todos]
     newTodos.push({ text, completed: false })
     saveTodos(newTodos)
