@@ -3,6 +3,7 @@ import { useContext } from 'react'
 
 //COMPONENTS
 import CreateTodoButton from '../CreateTodoButton'
+import Header from '../TodoHeader'
 import Modal from '../Modal'
 import TodoCounter from '../TodoCounter'
 import TodoForm from '../TodoForm'
@@ -21,12 +22,17 @@ import './AppUI.style.css'
 
 const AppUI = () => {
   const {
+    completedTodos,
     deleteTodo,
     error,
     loading,
     openModal,
     toggleCompleteTodo,
+    totalTodos,
+    search,
     searchedTodos,
+    setOpenModal,
+    setSearch,
   } = useContext(TodoContext)
 
   return (
@@ -39,8 +45,16 @@ const AppUI = () => {
 
       {!loading && searchedTodos.length && (
         <>
-          <TodoCounter />
-          <TodoSearch />
+          <Header>
+            <TodoCounter
+              completedTodos={completedTodos}
+              totalTodos={totalTodos}
+            />
+            <TodoSearch
+              search={search}
+              setSearch={setSearch}
+              />
+          </Header>
 
           <TodoList>
             {searchedTodos.map((item) => (
@@ -53,7 +67,10 @@ const AppUI = () => {
               />
             ))}
           </TodoList>
-          <CreateTodoButton />
+          <CreateTodoButton
+            openModal={openModal}
+            setOpenModal={setOpenModal}
+            />
         </>
       )}
       {!!openModal && (

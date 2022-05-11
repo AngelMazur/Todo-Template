@@ -1,0 +1,10 @@
+.message{
+  text-align: center;
+  color: red;
+}
+.ErrorState{
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}

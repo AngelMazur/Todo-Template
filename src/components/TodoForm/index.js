@@ -19,7 +19,7 @@ const TodoForm = () => {
     addTodo(newTodoValue)
     setOpenModal(false)
   }
-
+  
   //FUNCION PARA HACER SUBMIT CON ENTER
   const onKeyUp = (e) => {
     if (e.key === 'Enter') return handleSubmit()
@@ -43,7 +43,7 @@ const TodoForm = () => {
       </label>
       <textarea
         autoFocus
-        autoCorrect='on'
+        autoCorrect="on"
         cols="30"
         id="comment"
         name="comment"

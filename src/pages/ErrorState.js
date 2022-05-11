@@ -1,11 +1,11 @@
 import React from 'react'
-import TodoCounter from '../components/TodoCounter'
 import TodoSearch from '../components/TodoSearch'
+import '../styles/ErrorState.style.css'
 
 const ErrorState = () => {
   return (
     <>
-          <TodoCounter />
+          <h2 className='message'>No hay Todos existentes</h2>
           <TodoSearch />
           <p className="ErrorState">Error...</p>
         </>
