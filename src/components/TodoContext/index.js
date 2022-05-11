@@ -1,6 +1,6 @@
 import React from 'react'
 import { createContext, useState } from 'react'
-import useLocalStorage from '../components/Hooks/useLocalStorage'
+import useLocalStorage from '../Hooks/useLocalStorage'
 
 export const TodoContext = createContext()
 

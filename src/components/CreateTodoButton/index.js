@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
-import { TodoContext } from './TodoContext'
-import '../styles/CreateTodoButton.style.css'
+import { TodoContext } from '../TodoContext'
+import './CreateTodoButton.style.css'
 
 const CreateTodoButton = () => {
   const { setOpenModal, openModal } = useContext(TodoContext)
