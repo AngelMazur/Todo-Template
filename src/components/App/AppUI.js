@@ -17,7 +17,7 @@ import ErrorState from '../../pages/ErrorState'
 import EmptyState from '../../pages/EmptyState'
 
 //STYLES
-import '../../styles/AppUI.style.css'
+import './AppUI.style.css'
 
 const AppUI = () => {
   const {
@@ -25,21 +25,10 @@ const AppUI = () => {
     error,
     loading,
     openModal,
-    // setOpenModal,
     toggleCompleteTodo,
     searchedTodos,
   } = useContext(TodoContext)
-  
-  //TODO: BORRAR ESTO CUANDO HABLE CON ANDRES
-  // const toogleOpenModal = () => {
-  //   setOpenModal(!openModal)
-  // }
-  // const onKeyUp = (event) => {
-  //   if (event.key === 'Enter') {
-  //     return toogleOpenModal()
-  //   }
-  // }
-  // console.log(onKeyUp)
+
   return (
     <>
       {loading && <LoadingState />}
