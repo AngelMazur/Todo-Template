@@ -1,11 +1,8 @@
-import React from 'react'
-import { createContext, useState } from 'react'
-import useLocalStorage from '../Hooks/useLocalStorage'
+import { useState } from 'react'
+import useLocalStorage from './useLocalStorage'
 
-export const TodoContext = createContext()
-
-export const TodoProvider = ({ children }) => {
-  //PROPS PROVIDER
+export const useTodos = () => {
+  //PROPS
   const {
     item: todos,
     saveItem: saveTodos,
@@ -24,7 +21,7 @@ export const TodoProvider = ({ children }) => {
   //ARRAY PARA PINTAR TODOS LOS TODOS
   let searchedTodos = []
 
-  //CONDICIONAL PARA BUSCAR TODOS
+  //CONDICIONAL PARA BUSCAR LETRAS EN TODOS
   if (search.length >= 1) {
     searchedTodos = todos.filter((todo) => {
       const todosText = todo.text.toLowerCase()
@@ -57,24 +54,20 @@ export const TodoProvider = ({ children }) => {
     newTodos.splice(todoIndex, 1)
     saveTodos(newTodos)
   }
-  return (
-    <TodoContext.Provider
-      value={{
-        addTodo,
-        completedTodos,
-        deleteTodo,
-        error,
-        loading,
-        openModal,
-        toggleCompleteTodo,
-        totalTodos,
-        searchedTodos,
-        search,
-        setOpenModal,
-        setSearch,
-      }}
-    >
-      {children}
-    </TodoContext.Provider>
-  )
+  return {
+    addTodo,
+    completedTodos,
+    deleteTodo,
+    error,
+    loading,
+    openModal,
+    toggleCompleteTodo,
+    totalTodos,
+    searchedTodos,
+    search,
+    setOpenModal,
+    setSearch,
+  }
 }
+
+export default useTodos

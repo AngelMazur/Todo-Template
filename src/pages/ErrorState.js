@@ -1,6 +1,6 @@
 import React from 'react'
 import TodoSearch from '../components/TodoSearch'
-import '../styles/ErrorState.style.css'
+import '../styles/App.style.css'
 
 const ErrorState = () => {
   return (
@@ -13,3 +13,5 @@ const ErrorState = () => {
 }
 
 export default ErrorState
+
+//TODO: Crear stilos para que oculte los componentes que no sean necesarios, eso se puede hacer con css

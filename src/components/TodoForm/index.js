@@ -1,13 +1,9 @@
 import React from 'react'
-import { useContext } from 'react'
 import { useState } from 'react'
-import { TodoContext } from '../TodoContext'
 
 import './TodoForm.style.css'
 
-const TodoForm = () => {
-  const { addTodo, setOpenModal } = useContext(TodoContext)
-
+const TodoForm = ({ addTodo, setOpenModal }) => {
   const [newTodoValue, setNewTodoValue] = useState('')
 
   //FUNCION PARA CANCELAR MODAL
@@ -19,7 +15,7 @@ const TodoForm = () => {
     addTodo(newTodoValue)
     setOpenModal(false)
   }
-  
+
   //FUNCION PARA HACER SUBMIT CON ENTER
   const onKeyUp = (e) => {
     if (e.key === 'Enter') return handleSubmit()
