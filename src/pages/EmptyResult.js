@@ -3,7 +3,9 @@ import React from 'react'
 const EmptyResult = ({searchText}) => {
   return (
     <>
-    <p>No hay resultados para {searchText}</p>
+    <section className='EmptyResult'>
+      <p>No hay resultados para {searchText}</p>
+    </section>
     </>
   )
 }

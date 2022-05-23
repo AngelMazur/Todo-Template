@@ -64,5 +64,14 @@
   align-items: center;
   justify-content: flex-start;
   height: 100vh;
+  color: red;
 }
-
+.EmptyResult{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  color: #f12144;
+}

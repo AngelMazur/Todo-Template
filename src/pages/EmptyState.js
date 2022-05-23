@@ -8,5 +8,3 @@ const EmptyState = () => {
     )}
 
 export default EmptyState
-
-//TODO: Crear stilos para que oculte los componentes que no sean necesarios, eso se puede hacer con css

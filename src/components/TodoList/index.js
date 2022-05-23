@@ -7,7 +7,6 @@ import React from 'react'
 import './TodoList.style.css'
 
 const TodoList = ({
-  children,
   error,
   loading,
   onError,

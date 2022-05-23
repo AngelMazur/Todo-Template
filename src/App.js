@@ -39,48 +39,50 @@ const App = () => {
   console.log(`Existen TODOs -> ${!!totalTodos}`)
   return (
     <>
-
-        <>
-          <Header>
-            <TodoCounter
-              completedTodos={completedTodos}
-              totalTodos={totalTodos}
-            />
-            <TodoSearch search={search} setSearch={setSearch} />
-          </Header>
-
-          <TodoList
-            error={error}
-            loading={loading}
-            searchText={search}
-            searchedTodos={searchedTodos}
-            totalTodos={ totalTodos}
-            //render props
-            onError={() => <ErrorState />}
-            onLoading={() => <LoadingState />}
-            onEmptyResult={() => <EmptyResult searchText={search} />}
-            onEmptyState={() => <EmptyState/>}
-            render={(item) => ( 
-              <TodoItem
-                key={item.text}
-                text={item.text}
-                completed={item.completed}
-                onComplete={() => toggleCompleteTodo(item.text)}
-                onDelete={() => deleteTodo(item.text)}
-              />
-            )}
+      <>
+        <Header
+        loading={loading}
+        error={error}
+        totalTodos={totalTodos}
+        >
+          <TodoCounter
+            completedTodos={completedTodos}
+            totalTodos={totalTodos}
           />
-          <CreateTodoButton
-            openModal={openModal}
-            setOpenModal={setOpenModal}
+          <TodoSearch search={search} setSearch={setSearch} />
+        </Header>
+
+        <TodoList
+          error={error}
+          loading={loading}
+          searchText={search}
+          searchedTodos={searchedTodos}
+          totalTodos={totalTodos}
+          //render props
+          onError={() => <ErrorState />}
+          onLoading={() => <LoadingState />}
+          onEmptyResult={() => <EmptyResult searchText={search} />}
+          onEmptyState={() => <EmptyState />}
+          render={(item) => (
+            <TodoItem
+              key={item.text}
+              text={item.text}
+              completed={item.completed}
+              onComplete={() => toggleCompleteTodo(item.text)}
+              onDelete={() => deleteTodo(item.text)}
             />
-        </>
+          )}
+        />
+        <CreateTodoButton
+          loading={loading}
+          error={error}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+        />
+      </>
       {!!openModal && (
         <Modal>
-          <TodoForm
-            addTodo={addTodo}
-            setOpenModal={setOpenModal}
-            />
+          <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </>
