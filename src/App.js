@@ -10,6 +10,7 @@ import TodoItem from './components/TodoItem'
 import TodoList from './components/TodoList'
 import TodoSearch from './components/TodoSearch'
 import useTodos from './components/Hooks/useTodos'
+import ChangleAlertWithStorageListener from './components/ChangeAlert'
 
 //PAGES
 import LoadingState from './pages/LoadingState'
@@ -35,8 +36,6 @@ const App = () => {
     setOpenModal,
     setSearch,
   } = useTodos()
-  console.log(`No se encuentra en el buscador -> ${!searchedTodos.length}`)
-  console.log(`Existen TODOs -> ${!!totalTodos}`)
   return (
     <>
       <>
@@ -79,6 +78,7 @@ const App = () => {
           openModal={openModal}
           setOpenModal={setOpenModal}
         />
+        <ChangleAlertWithStorageListener />
       </>
       {!!openModal && (
         <Modal>

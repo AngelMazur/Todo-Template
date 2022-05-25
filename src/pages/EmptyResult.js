@@ -11,5 +11,3 @@ const EmptyResult = ({searchText}) => {
 }
 
 export default EmptyResult
-
-//TODO: Estilar componente
