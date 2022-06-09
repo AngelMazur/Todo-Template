@@ -9,24 +9,27 @@ const ChangeAlert = ({ toggleShow, show }) => {
     window.location.reload()
     toggleShow(false)
   }
-  if(show){
+  if (show) {
     return (
-        <div className="ChangeAlert-bg">
-            <div className="ChangeAlert-container">
-            <p>Parece que cambiaste tus TODOs en otra pestaña o ventana del navegador.</p>
-            <p>¿Quieres sincronizar tus TODOs?</p>
-            <button
-                className="TodoForm-button TodoForm-button--add"
-                onClick={() => refresh()}
-            >
-                Yes!
-            </button>
-            </div>
+      <div className="ChangeAlert-bg">
+        <div className="ChangeAlert-container">
+          <p>
+            Parece que cambiaste tus TODOs en otra pestaña o ventana del
+            navegador.
+          </p>
+          <p>¿Quieres sincronizar tus TODOs?</p>
+          <button
+            className="Sync-button Sync-button--add"
+            onClick={() => refresh()}
+          >
+            Yes!
+          </button>
         </div>
-    );
-} else{
-    return null;
-}
+      </div>
+    )
+  } else {
+    return null
+  }
 }
 const ChangleAlertWithStorageListener = withStorageListener(ChangeAlert)
 

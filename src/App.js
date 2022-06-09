@@ -22,20 +22,26 @@ import ErrorState from './pages/ErrorState'
 import './styles/App.style.css'
 
 const App = () => {
+  const {state, stateUpdaters  } = useTodos()
+
   const {
-    addTodo,
+    search,
     completedTodos,
-    deleteTodo,
     error,
     loading,
     openModal,
-    toggleCompleteTodo,
     totalTodos,
-    search,
     searchedTodos,
+  } = state
+
+  const {
+    toggleCompleteTodo,
+    deleteTodo,
+    addTodo,
     setOpenModal,
     setSearch,
-  } = useTodos()
+  } = stateUpdaters
+
   return (
     <>
       <>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import useLocalStorage from './useLocalStorage'
+// import useLocalStorage from './useLocalStorage'
+import useLocalStorageWithReducer from './useLocalStorageWithReducer'
 
 export const useTodos = () => {
   //PROPS
@@ -8,7 +9,7 @@ export const useTodos = () => {
     saveItem: saveTodos,
     loading,
     error,
-  } = useLocalStorage('TODOS_V1', [])
+  } = useLocalStorageWithReducer('TODOS_V1', [])
 
   //USESTATE
   const [search, setSearch] = useState('')
@@ -54,20 +55,23 @@ export const useTodos = () => {
     newTodos.splice(todoIndex, 1)
     saveTodos(newTodos)
   }
-  return {
-    addTodo,
-    completedTodos,
-    deleteTodo,
-    error,
-    loading,
-    openModal,
+  const stateUpdaters = {
     toggleCompleteTodo,
-    totalTodos,
-    searchedTodos,
-    search,
+    deleteTodo,
+    addTodo,
     setOpenModal,
     setSearch,
   }
-}
+  const state = {
+    search,
+    completedTodos,
+    error,
+    loading,
+    openModal,
+    totalTodos,
+    searchedTodos,
+  }
+  return { state, stateUpdaters }
+  }
 
 export default useTodos

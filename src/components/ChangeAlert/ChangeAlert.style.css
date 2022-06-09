@@ -21,7 +21,16 @@
   font-size: 20px;
 }
 
-.TodoForm-button{
+.Sync-button{
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 400;
+  width: 120px;
+  height: 48px;
+  border-radius: 2px;
+  border: none;
+  font-family: 'Montserrat';
   margin-top: 16px;
   margin-bottom: 16px;
   color: #f2f4f5;
